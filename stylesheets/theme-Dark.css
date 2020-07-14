@@ -306,6 +306,10 @@ input {
     text-shadow: 0px 0px 7px #b341e0;
 }
 
+#timetheorems, #purchasedtimetheorems {
+    color: #d0d0d0 !important;
+}
+
 .TheoremAmount {
     color: #64DD17 !important;
     text-shadow: 0px 0px 7px #64DD17;
@@ -332,7 +336,7 @@ input {
     border: 1px solid #B84B5F !important;
 }
 
-#theorembuybackground {
+#TTbuttons {
     background: #455A64 !important;
 }
 

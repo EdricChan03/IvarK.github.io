@@ -64,6 +64,13 @@ function maxTheorems() {
   updateEternityUpgrades()
 }
 
+function calcTotalTheorems() {
+    // From kajfik#4320 on Discord
+    return player.timestudy.amcost.exponent / 20000 - 1 +
+        player.timestudy.ipcost.exponent / 100 +
+        Math.round(player.timestudy.epcost.log2());
+}
+
 function updateTheoremButtons() {
   document.getElementById("theoremam").className = player.money.gte(player.timestudy.amcost) ? "timetheorembtn" : "timetheorembtnlocked"
   document.getElementById("theoremip").className = player.infinityPoints.gte(player.timestudy.ipcost) ? "timetheorembtn" : "timetheorembtnlocked"
@@ -73,6 +80,8 @@ function updateTheoremButtons() {
   document.getElementById("theoremam").innerHTML = "Buy Time Theorems <br>Cost: "+shortenCosts(player.timestudy.amcost)
   if (player.timestudy.theorem>99999) document.getElementById("timetheorems").innerHTML = "You have <span style='display:inline' class=\"TheoremAmount\">"+shortenMoney(player.timestudy.theorem)+"</span> Time "+"Theorems."
   else document.getElementById("timetheorems").innerHTML = "You have <span style='display:inline' class=\"TheoremAmount\">"+player.timestudy.theorem.toFixed(0)+"</span> Time "+ (player.timestudy.theorem == 1 ? "Theorem." : "Theorems.")
+  if (calcTotalTheorems()>99999) document.getElementById("purchasedtimetheorems").innerHTML = "(Purchased <span style='display:inline' class=\"PurchasedTheoremAmount\">"+shortenMoney(calcTotalTheorems())+"</span> total)"
+  else document.getElementById("purchasedtimetheorems").innerHTML = "(Purchased <span style='display:inline' class=\"PurchasedTheoremAmount\">"+calcTotalTheorems().toFixed(0)+"</span> total)"
 }
 
 function buyTimeStudy(name, cost, check) {

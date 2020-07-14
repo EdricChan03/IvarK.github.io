@@ -5332,6 +5332,8 @@ function gameLoop(diff) {
         if (document.getElementById("timestudies").style.display != "none" && document.getElementById("eternitystore").style.display != "none") {
             if (player.timestudy.theorem>99999) document.getElementById("timetheorems").innerHTML = "You have <span style='display:inline' class=\"TheoremAmount\">"+shortenMoney(player.timestudy.theorem)+"</span> Time "+"Theorems."
             else document.getElementById("timetheorems").innerHTML = "You have <span style='display:inline' class=\"TheoremAmount\">"+player.timestudy.theorem.toFixed(0)+"</span> Time "+ (player.timestudy.theorem == 1 ? "Theorem." : "Theorems.")
+            if (calcTotalTheorems()>99999) document.getElementById("purchasedtimetheorems").innerHTML = "(Purchased <span style='display:inline' class=\"PurchasedTheoremAmount\">"+shortenMoney(calcTotalTheorems())+"</span> total)"
+  else document.getElementById("purchasedtimetheorems").innerHTML = "(Purchased <span style='display:inline' class=\"PurchasedTheoremAmount\">"+calcTotalTheorems().toFixed(0)+"</span> total)"
             updateTimeStudyButtons()
         }
     }
